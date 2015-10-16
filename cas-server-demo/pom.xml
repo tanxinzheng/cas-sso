@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <name>CAS Server Demo Webapp</name>
-    <artifactId>cas-server-webapp</artifactId>
+    <artifactId>cas-server-demo</artifactId>
     <packaging>war</packaging>
     <version>1.0</version>
 
@@ -54,6 +54,17 @@
             <type>war</type>
             <scope>runtime</scope>
         </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.jasig.cas</groupId>-->
+            <!--<artifactId>cas-server-support-jdbc</artifactId>-->
+            <!--<version>${cas.version}</version>-->
+            <!--<scope>runtime</scope>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>mysql</groupId>-->
+            <!--<artifactId>mysql-connector-java</artifactId>-->
+            <!--<version>5.1.31</version>-->
+        <!--</dependency>-->
     </dependencies>
 
     <properties>

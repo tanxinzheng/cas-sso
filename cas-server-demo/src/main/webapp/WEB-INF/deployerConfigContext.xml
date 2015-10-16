@@ -104,6 +104,7 @@
        | * org.jasig.cas.adaptors.x509.authentication.handler.support.X509CredentialsAuthenticationHandler
        | * org.jasig.cas.support.spnego.authentication.handler.support.JCIFSSpnegoAuthenticationHandler
        -->
+    <!--    TODO custom-tag 此处自定义配置    -->
     <bean id="primaryAuthenticationHandler"
           class="org.jasig.cas.authentication.AcceptUsersAuthenticationHandler">
         <property name="users">
@@ -190,4 +191,30 @@
               p:serviceTicketCountWarnThreshold="5000"
               p:sessionCountWarnThreshold="100000" />
     </util:list>
+
+
+    <!--
+        TODO 使用定制化配置时，需禁用测试配置相关文件（带有 custom-tag 代码处为测试配置）
+        以下内容为定制化配置（JDBC，密码MD5加密等）,如需简单测试，注释以下内容即可
+    -->
+    <!--<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">-->
+        <!--<property name="driverClassName" value="com.mysql.jdbc.Driver" />-->
+        <!--<property name="url" value="jdbc:mysql://192.168.8.200:3306/udf_ecw_dev"/>-->
+        <!--<property name="username" value="dev"/>-->
+        <!--<property name="password" value="dev"/>-->
+    <!--</bean>-->
+
+    <!--<!--    若用户名和密码在同一表中可直接使用此配置，若用户名和密码分别在不同表中，-->
+            <!--可自行实现org.jasig.cas.adaptors.jdbc.AbstractJdbcUsernamePasswordAuthenticationHandler 接口进行扩展-->
+        <!---->-->
+    <!--<bean id="primaryAuthenticationHandler"-->
+          <!--class="org.jasig.cas.adaptors.jdbc.QueryDatabaseAuthenticationHandler">-->
+        <!--<property name="dataSource" ref="dataSource" />-->
+        <!--<property name="sql" value="SELECT m.MEMBER_CODE as password FROM cr_member m WHERE m.EMAIL=?" />-->
+        <!--<property name="passwordEncoder" ref="passwordEncoder" />-->
+    <!--</bean>-->
+    <!--<!--    默认支持MD5,SHA1，如需支持其他编码方式可自行实现org.jasig.cas.authentication.handler.PasswordEncoder接口进行扩展   -->-->
+    <!--<bean id="passwordEncoder" class="org.jasig.cas.authentication.handler.DefaultPasswordEncoder" >-->
+        <!--<constructor-arg value="MD5" />-->
+    <!--</bean>-->
 </beans>
