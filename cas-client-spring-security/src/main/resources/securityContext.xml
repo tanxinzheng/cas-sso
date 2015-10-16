@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sec="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+
+	<sec:http use-expressions="true" entry-point-ref="casEntryPoint">
+		<sec:intercept-url pattern="/protected/**" access="isAuthenticated()" />
+		<sec:intercept-url pattern="/**" access="permitAll" />
+		<sec:custom-filter position="CAS_FILTER" ref="casFilter" />
+		<!-- Handle CAS logout request from the browser (on /j_spring_security_logout): -->
+		<sec:logout />
+		<!-- Handle CAS logout directly from the CAS server: -->
+		<sec:custom-filter before="CAS_FILTER" ref="singleLogoutFilter" />
+	</sec:http>
+
+	<bean id="casFilter" class="org.springframework.security.cas.web.CasAuthenticationFilter">
+		<property name="authenticationManager" ref="authenticationManager" />
+	</bean>
+
+	<bean id="singleLogoutFilter" class="org.jasig.cas.client.session.SingleSignOutFilter" >
+		<property name="casServerUrlPrefix" value="http://localhost:8080/cas/logout" />
+	</bean>
+
+	<bean id="casEntryPoint"
+		class="org.springframework.security.cas.web.CasAuthenticationEntryPoint">
+		<!-- Change with your own CAS server -->
+		<property name="loginUrl" value="http://localhost:8080/cas/login" />
+		<property name="serviceProperties" ref="serviceProperties" />
+
+	</bean>
+	<bean id="serviceProperties" class="org.springframework.security.cas.ServiceProperties">
+		<!-- Change with your own host name -->
+		<property name="service" value="http://localhost:8081/j_spring_cas_security_check" />
+		<property name="sendRenew" value="false" />
+	</bean>
+
+	<sec:authentication-manager alias="authenticationManager">
+		<sec:authentication-provider ref="casAuthenticationProvider" />
+	</sec:authentication-manager>
+
+	<bean id="casUserDetailService" class="com.github.tanxinzheng.cas.client.CasUserDetailService">
+	</bean>
+
+	<bean id="casAuthenticationProvider"
+		class="org.springframework.security.cas.authentication.CasAuthenticationProvider">
+		<property name="authenticationUserDetailsService" ref="casUserDetailService" />
+		<property name="serviceProperties" ref="serviceProperties" />
+		<property name="ticketValidator">
+			<bean class="org.jasig.cas.client.validation.Cas20ServiceTicketValidator">
+				<!-- Change with your own CAS server -->
+				<constructor-arg index="0" value="http://localhost:8080/cas/p3/" />
+				<property name="encoding" value="UTF-8" />
+			</bean>
+		</property>
+		<property name="key" value="an_id_for_this_auth_provider_only" />
+	</bean>
+
+</beans>
