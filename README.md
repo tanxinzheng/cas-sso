@@ -4,18 +4,19 @@
 
 欢迎访问单点登录中心认证服务项目Demo演示。
 
-CAS provides enterprise single sign-on service:
+CAS提供企业级单点登录服务:
 
-- An open and well-documented protocol
-- An open-source Java server component
-- A library of clients for Java, .Net, PHP, Perl, Apache, uPortal, and others
-- Integrates with uPortal, BlueSocket, TikiWiki, Mule, Liferay, Moodle and others
-- Community documentation and implementation support
-- An extensive community of adopters
+- 提供开放且完善的文档API
+- 提供多种开源Java服务组件（Oauth2,OpenID,SAML,LDAP,etc...）
+- 提供多种开发语言的客户端 Java, .Net, PHP, Perl, Apache, uPortal, and others
+- 集成 uPortal, BlueSocket, TikiWiki, Mule, Liferay, Moodle and others
+- 提供公共文档和实施技术支持
+- 拥有广泛的用户群体
 
 ## 相关文档
 
 CAS 官网：<http://www.jasig.org/cas>
+
 CAS API：<http://jasig.github.io/cas/4.1.x/installation/User-Interface-Customization.html#overview>
 
 ## Build [![Build Status](https://api.travis-ci.org/Jasig/cas.png)](http://travis-ci.org/Jasig/cas) [![Codeship Status for Jasig/cas](https://www.codeship.io/projects/a204a3a0-727c-0131-ab14-4e46b2fa20d2/status)](https://www.codeship.io/projects/13661)
@@ -25,10 +26,6 @@ rather utilizes Maven's overlay mechanism to combine CAS original artifacts and 
 customizations to further ease future upgrades and maintenance.
 
 ## Download
-- Binary releases may be downloaded from [here](http://www.jasig.org/cas/download).
-- CAS artifacts are published through the [Maven Central Repository.](http://mvnrepository.com/artifact/org.jasig.cas)
-- A snapshot of the codebase's `master` branch may be downloaded from [here](https://github.com/Jasig/cas/archive/master.zip).
-- Snapshot artifacts are also published through the [Sonatype snapashots repository](https://oss.sonatype.org/content/repositories/snapshots/org/jasig/cas/) under the group id **`org.jasig.cas`**.
 - The codebase may also be *cloned* using a Git client via the following command:
 ```bash
 git clone https://github.com/tanxinzheng/cas-sso.git
