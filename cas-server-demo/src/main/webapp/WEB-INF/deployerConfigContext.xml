@@ -204,16 +204,16 @@
         <!--<property name="password" value="dev"/>-->
     <!--</bean>-->
 
-    <!--<!--    若用户名和密码在同一表中可直接使用此配置，若用户名和密码分别在不同表中，-->
+    <!--&lt;!&ndash;    若用户名和密码在同一表中可直接使用此配置，若用户名和密码分别在不同表中，-->
             <!--可自行实现org.jasig.cas.adaptors.jdbc.AbstractJdbcUsernamePasswordAuthenticationHandler 接口进行扩展-->
-        <!---->-->
+        <!--&ndash;&gt;-->
     <!--<bean id="primaryAuthenticationHandler"-->
           <!--class="org.jasig.cas.adaptors.jdbc.QueryDatabaseAuthenticationHandler">-->
         <!--<property name="dataSource" ref="dataSource" />-->
         <!--<property name="sql" value="SELECT m.MEMBER_CODE as password FROM cr_member m WHERE m.EMAIL=?" />-->
         <!--<property name="passwordEncoder" ref="passwordEncoder" />-->
     <!--</bean>-->
-    <!--<!--    默认支持MD5,SHA1，如需支持其他编码方式可自行实现org.jasig.cas.authentication.handler.PasswordEncoder接口进行扩展   -->-->
+    <!--&lt;!&ndash;    默认支持MD5,SHA1，如需支持其他编码方式可自行实现org.jasig.cas.authentication.handler.PasswordEncoder接口进行扩展   &ndash;&gt;-->
     <!--<bean id="passwordEncoder" class="org.jasig.cas.authentication.handler.DefaultPasswordEncoder" >-->
         <!--<constructor-arg value="MD5" />-->
     <!--</bean>-->
