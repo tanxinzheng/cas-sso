@@ -1,0 +1,11 @@
+## 待完成功能点
+- ~~CAS Server~~
+- ~~CAS Client for Spring Security~~
+- CAS Client for Apache Shiro
+- ~~Remember Me~~
+- OpenID Login for QQ
+- OpenID Login for Wechat
+- OpenID Login for Alipay
+- OpenID Login for Weibo
+- OAuth2 for Server
+- OAuth2 for Client
