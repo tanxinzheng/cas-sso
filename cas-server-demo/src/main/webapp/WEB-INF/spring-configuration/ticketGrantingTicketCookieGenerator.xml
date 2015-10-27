@@ -31,7 +31,8 @@
     <!--    cookieSecure设置为false关闭https协议    -->
 	<bean id="ticketGrantingTicketCookieGenerator" class="org.jasig.cas.web.support.CookieRetrievingCookieGenerator"
 		p:cookieSecure="false"
-		p:cookieMaxAge="-1"
+		p:cookieMaxAge="3600"
 		p:cookieName="CASTGC"
-		p:cookiePath="/cas" />
+          p:rememberMeMaxAge="3600"
+          p:cookiePath="/cas" />
 </beans>
