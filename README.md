@@ -13,11 +13,17 @@ CAS提供企业级单点登录服务:
 - 提供公共文档和实施技术支持
 - 拥有广泛的用户群体
 
+## CAS Demo介绍
+- CAS服务端演示
+- 集成Spring Security客户端演示
+- 集成NodeJs客户端演示
+- 集成Remember Me功能
+
 ## 相关文档
 
 CAS 官网：<http://www.jasig.org/cas>
 
-CAS API：<http://jasig.github.io/cas/4.1.x/installation/User-Interface-Customization.html#overview>
+CAS API：<http://jasig.github.io/cas/4.0.x/installation/
 
 ## Build [![Build Status](https://api.travis-ci.org/Jasig/cas.png)](http://travis-ci.org/Jasig/cas) [![Codeship Status for Jasig/cas](https://www.codeship.io/projects/a204a3a0-727c-0131-ab14-4e46b2fa20d2/status)](https://www.codeship.io/projects/13661)
 It is recommended to build and deploy CAS locally using the [Maven War Overlay method][overlay]. 
@@ -31,20 +37,5 @@ customizations to further ease future upgrades and maintenance.
 git clone https://github.com/tanxinzheng/cas-sso.git
 ```
 
-**Note:** If building CAS from the source, running the test cases currently requires an active Internet connection.
+**注:** If building CAS from the source, running the test cases currently requires an active Internet connection.
 Please [see the maven docs][skip] on how to disable the tests.
-
-
-## Documentation
-- [Official Documentation][wiki]
-- [Release Notes](https://issues.jasig.org/secure/ReleaseNote.jspa?projectId=10007)
-
-## Addons
-- [CAS Addons](https://github.com/Unicon/cas-addons) is an open source collection of useful CAS server extensions.
-
-## Contributions
-- [How to contribute to Jasig](http://www.jasig.org/jasig/contribute)
-
-[wiki]: http://jasig.github.io/cas
-[overlay]: http://jasig.github.io/cas/current/installation/Maven-Overlay-Installation.html
-[skip]: http://maven.apache.org/general.html#skip-test

@@ -85,6 +85,12 @@
         <property name="authenticationPolicy">
             <bean class="org.jasig.cas.authentication.AnyAuthenticationPolicy" />
         </property>
+
+        <property name="authenticationMetaDataPopulators">
+            <list>
+                <bean class="org.jasig.cas.authentication.principal.RememberMeAuthenticationMetaDataPopulator" />
+            </list>
+        </property>
     </bean>
 
     <!-- Required for proxy ticket mechanism. -->
