@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app
+		xmlns="http://java.sun.com/xml/ns/javaee"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+		version="3.0"
+		metadata-complete="true">
+
+	<display-name>Demo webapp protected by the CAS client from Shiro</display-name>
+
+	<!-- Filter to handle logout requests sent directly by the CAS server -->
+	<filter>
+		<filter-name>CAS Single Sign Out Filter</filter-name>
+		<filter-class>org.jasig.cas.client.session.SingleSignOutFilter
+		</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>CAS Single Sign Out Filter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<!-- Listener to clean sessions -->
+	<listener>
+		<listener-class>org.jasig.cas.client.session.SingleSignOutHttpSessionListener</listener-class>
+	</listener>
+
+	<!-- 	TODO 使用shiro.ini配置集成CAS（使用此配置请注释 shiro spring security filter代码段）-->
+	<!-- 	Shiro security filter  -->
+	<filter>
+		<filter-name>ShiroFilter</filter-name>
+		<filter-class>org.apache.shiro.web.servlet.IniShiroFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>ShiroFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+
+	<!--	TODO 使用spring-shiro.xml配置集成CA（使用此配置请注释 Shiro security filter代码段）	-->
+	<!--	shiro spring security filter 	-->
+	<!--<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:spring-shiro.xml</param-value>
+	</context-param>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<filter>
+		<filter-name>shiroFilterFactoryBean</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+		<init-param>
+			<param-name>targetFilterLifecycle</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>shiroFilterFactoryBean</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>-->
+
+</web-app>

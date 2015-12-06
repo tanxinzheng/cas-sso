@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="casFilter" class="org.apache.shiro.cas.CasFilter">
+        <!-- 配置验证错误时的失败页面 -->
+        <property name="failureUrl" value="/error.jsp"></property>
+    </bean>
+
+    <bean id="casRealm" class="org.apache.shiro.cas.CasRealm">
+        <!--<property name="validationProtocol" value=""/>-->
+        <property name="casServerUrlPrefix" value="http://localhost:8080/cas/p3"></property>
+        <property name="casService" value="http://localhost:8082/shiro-cas"></property>
+        <property name="defaultRoles" value="user"></property>
+    </bean>
+
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="realm" ref="casRealm"/>
+        <property name="subjectFactory" ref="casSubjectFactory"/>
+    </bean>
+
+    <bean id="casSubjectFactory" class="org.apache.shiro.cas.CasSubjectFactory"/>
+
+    <bean id="shiroFilterFactoryBean" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager"/>
+        <property name="loginUrl" value="http://localhost:8080/cas/login?service=http://localhost:8082/shiro-cas"/>
+        <property name="filters">
+            <map>
+                <entry key="casFilter" value-ref="casFilter"></entry>
+            </map>
+        </property>
+        <property name="filterChainDefinitions">
+            <value>
+                /shiro-cas = casFilter <!-- cas过滤器路径， -->
+                /protected/** = user
+                /logout = logout
+                /** = anon
+            </value>
+        </property>
+    </bean>
+
+</beans>

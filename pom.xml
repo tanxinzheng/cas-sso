@@ -13,6 +13,7 @@
     <modules>
         <module>cas-server-demo</module>
         <module>cas-client-spring-security</module>
+        <module>cas-client-apache-shiro</module>
     </modules>
 
     <build>

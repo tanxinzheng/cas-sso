@@ -1,8 +1,9 @@
 ## 待完成功能点
 - ~~CAS Server~~
 - ~~CAS Client for Spring Security~~
-- CAS Client for Apache Shiro
+- ~~CAS Client for Apache Shiro~~
 - ~~Remember Me~~
+- CAS Server Register Page
 - OpenID Login for QQ
 - OpenID Login for Wechat
 - OpenID Login for Alipay

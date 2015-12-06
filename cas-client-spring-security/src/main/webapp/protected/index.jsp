@@ -7,9 +7,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>java-spring-security-cas-client-demo</title>
+	<title>Spring Security CAS Client</title>
 	<meta charset="UTF-8" />
-	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="/resources/css/bootstrap.min.css" />
 </head>
 <body>
 	<div class="container">
@@ -19,6 +19,7 @@
 			<!-- #### change with your own CAS server and your host name #### -->
 			<li><a href="http://localhost:8080/cas/logout?service=http://localhost:8081">Call the CAS logout</a></li>
 		</ul>
+		<br>
 		<h3>
 			<%
 				CasAuthenticationToken casAuthenticationToken = (CasAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
