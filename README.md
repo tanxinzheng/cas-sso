@@ -16,8 +16,9 @@
 ## CAS Demo
 - CAS服务端演示
 - 集成Spring Security客户端演示
-- 集成NodeJs客户端演示
+- 集成Apache shiro客户端演示
 - 集成Remember Me功能
+- 集成NodeJs客户端演示(待开发)
 
 ## 异常情况测试情况
 - 客户端登录后，CAS服务宕机不影响客户端操作（客户端在宕机过程中不与CAS服务端交互情况），且宕机期间无法注销用户信息
