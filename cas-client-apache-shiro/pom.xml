@@ -85,6 +85,9 @@
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>9.2.2.v20140723</version>
                 <configuration>
+                    <httpConnector>
+                        <port>8082</port>
+                    </httpConnector>
                     <webApp>
                         <contextPath>/</contextPath>
                     </webApp>
