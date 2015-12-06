@@ -15,8 +15,9 @@
 - [x] CAS服务端演示
 - [x] 集成Spring Security客户端演示
 - [x] 集成Apache Shiro客户端演示
+- [ ] 集成NodeJs客户端演示
 - [x] 集成Remember Me功能
-- [ ] 集成NodeJs客户端演示(待开发)
+- [ ] 集成登录验证码
 - [ ] 自定义注册页面
 - [ ] OpenID Login for QQ
 - [ ] OpenID Login for Wechat
