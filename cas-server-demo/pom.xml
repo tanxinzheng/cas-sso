@@ -47,6 +47,12 @@
     </build>
 
     <dependencies>
+        <!--<dependency>-->
+            <!--<groupId>org.jasig.cas</groupId>-->
+            <!--<artifactId>cas-server-webapp-support</artifactId>-->
+            <!--<version>${cas.version}</version>-->
+            <!--<scope>compile</scope>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>org.jasig.cas</groupId>
             <artifactId>cas-server-webapp</artifactId>
