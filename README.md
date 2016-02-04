@@ -17,6 +17,7 @@
 - [x] 集成Apache Shiro客户端演示
 - [ ] 集成NodeJs客户端演示
 - [x] 集成Remember Me功能
+- [x] [集成Memcache功能](./cas-server-demo/README.md)
 - [ ] 集成登录验证码
 - [ ] 自定义注册页面
 - [ ] OpenID Login for QQ
@@ -25,6 +26,8 @@
 - [ ] OpenID Login for Alipay
 - [ ] OAuth2 for Server
 - [ ] OAuth2 for Client
+
+##
 
 ## 意见反馈
 欢迎大家随时提交反馈意见及功能需求，或fork之后new pull request，本人会及时对问题进行回复，[请戳我提交issue。](https://github.com/tanxinzheng/cas-sso/issues/new)
