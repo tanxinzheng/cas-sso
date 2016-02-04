@@ -137,6 +137,8 @@
     Bean that defines the attributes that a service may return.  This example uses the Stub/Mock version.  A real implementation
     may go against a database or LDAP server.  The id should remain "attributeRepository" though.
     +-->
+    <!--<bean id="attributeRepository" class="com.github.tanxinzheng.cas.server.support.MultipleAttributeUserDao"/>-->
+    <!-- -->
     <bean id="attributeRepository" class="org.jasig.services.persondir.support.StubPersonAttributeDao"
           p:backingMap-ref="attrRepoBackingMap" />
 

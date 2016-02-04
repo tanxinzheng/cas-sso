@@ -1,4 +1,4 @@
-CAS4 Overlay Template
+CAS Server 自定义扩展功能
 ============================
 
 ## 支持RememberMe功能

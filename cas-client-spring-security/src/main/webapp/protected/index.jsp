@@ -21,12 +21,12 @@
 		</ul>
 		<br>
 		<h3>
-			<%
-				CasAuthenticationToken casAuthenticationToken = (CasAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
-				AttributePrincipal principal = casAuthenticationToken.getAssertion().getPrincipal();
-			%>
-			<p>username: <%=principal.getName()%>
-			<p>attributes: <%=principal.getAttributes()%></p>
+			<%--<%--%>
+				<%--CasAuthenticationToken casAuthenticationToken = (CasAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();--%>
+				<%--AttributePrincipal principal = casAuthenticationToken.getAssertion().getPrincipal();--%>
+			<%--%>--%>
+			<%--<p>username: <%=principal.getName()%>--%>
+			<%--<p>attributes: <%=principal.getAttributes()%></p>--%>
 		</h3>
 	</div>
 </body>
