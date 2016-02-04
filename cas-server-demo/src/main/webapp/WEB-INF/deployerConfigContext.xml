@@ -137,16 +137,16 @@
     Bean that defines the attributes that a service may return.  This example uses the Stub/Mock version.  A real implementation
     may go against a database or LDAP server.  The id should remain "attributeRepository" though.
     +-->
-    <!--<bean id="attributeRepository" class="com.github.tanxinzheng.cas.server.support.MultipleAttributeUserDao"/>-->
+    <bean id="attributeRepository" class="com.github.tanxinzheng.cas.server.support.MultipleAttributeUserDao"/>
     <!-- -->
-    <bean id="attributeRepository" class="org.jasig.services.persondir.support.StubPersonAttributeDao"
-          p:backingMap-ref="attrRepoBackingMap" />
+    <!--<bean id="attributeRepository" class="org.jasig.services.persondir.support.StubPersonAttributeDao"-->
+          <!--p:backingMap-ref="attrRepoBackingMap" />-->
 
-    <util:map id="attrRepoBackingMap">
-        <entry key="uid" value="uid" />
-        <entry key="eduPersonAffiliation" value="eduPersonAffiliation" />
-        <entry key="groupMembership" value="groupMembership" />
-    </util:map>
+    <!--<util:map id="attrRepoBackingMap">-->
+        <!--<entry key="uid" value="uid" />-->
+        <!--<entry key="eduPersonAffiliation" value="eduPersonAffiliation" />-->
+        <!--<entry key="groupMembership" value="groupMembership" />-->
+    <!--</util:map>-->
 
     <!-- 
     Sample, in-memory data store for the ServiceRegistry. A real implementation
@@ -159,7 +159,7 @@
     <util:list id="registeredServicesList">
         <bean class="org.jasig.cas.services.RegexRegisteredService"
               p:id="0" p:name="HTTP and IMAP" p:description="Allows HTTP(S) and IMAP(S) protocols"
-              p:serviceId="^(https?|imaps?)://.*" p:evaluationOrder="10000001" />
+              p:serviceId="^(https?|imaps?)://.*" p:evaluationOrder="10000001"  p:ignoreAttributes="true" />
         <!--
         Use the following definition instead of the above to further restrict access
         to services within your domain (including sub domains).
@@ -212,16 +212,15 @@
         <!--<property name="password" value="dev"/>-->
     <!--</bean>-->
 
-    <!--&lt;!&ndash;    若用户名和密码在同一表中可直接使用此配置，若用户名和密码分别在不同表中，-->
+    <!--    若用户名和密码在同一表中可直接使用此配置，若用户名和密码分别在不同表中，-->
             <!--可自行实现org.jasig.cas.adaptors.jdbc.AbstractJdbcUsernamePasswordAuthenticationHandler 接口进行扩展-->
-        <!--&ndash;&gt;-->
     <!--<bean id="primaryAuthenticationHandler"-->
           <!--class="org.jasig.cas.adaptors.jdbc.QueryDatabaseAuthenticationHandler">-->
         <!--<property name="dataSource" ref="dataSource" />-->
         <!--<property name="sql" value="SELECT m.MEMBER_CODE as password FROM cr_member m WHERE m.EMAIL=?" />-->
         <!--<property name="passwordEncoder" ref="passwordEncoder" />-->
     <!--</bean>-->
-    <!--&lt;!&ndash;    默认支持MD5,SHA1，如需支持其他编码方式可自行实现org.jasig.cas.authentication.handler.PasswordEncoder接口进行扩展   &ndash;&gt;-->
+    <!--    默认支持MD5,SHA1，如需支持其他编码方式可自行实现org.jasig.cas.authentication.handler.PasswordEncoder接口进行扩展   -->
     <!--<bean id="passwordEncoder" class="org.jasig.cas.authentication.handler.DefaultPasswordEncoder" >-->
         <!--<constructor-arg value="MD5" />-->
     <!--</bean>-->
