@@ -18,7 +18,7 @@
 - [ ] 集成NodeJs客户端演示
 - [x] [集成Remember Me功能](./cas-server-demo/README.md)
 - [x] [集成Memcache功能](./cas-server-demo/README.md)
-- [ ] [扩展用户自定义属性](./cas-server-demo/README.md)
+- [x] [扩展用户自定义属性](./cas-server-demo/README.md)
 - [ ] ~~集成登录验证码~~
 - [ ] 自定义注册页面
 - [ ] OpenID Login for QQ
