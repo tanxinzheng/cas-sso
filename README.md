@@ -12,11 +12,11 @@
 - 拥有广泛的用户群体
 
 ## CAS Demo功能
-- [x] CAS服务端演示
-- [x] 集成Spring Security客户端演示
-- [x] 集成Apache Shiro客户端演示
+- [x] [CAS服务端演示](./cas-server-demo)
+- [x] [集成Spring Security客户端演示](./cas-client-spring-security)
+- [x] [集成Apache Shiro客户端演示](./cas-client-apache-shiro)
 - [ ] 集成NodeJs客户端演示
-- [x] 集成Remember Me功能
+- [x] [集成Remember Me功能](./cas-server-demo/README.md)
 - [x] [集成Memcache功能](./cas-server-demo/README.md)
 - [ ] 集成登录验证码
 - [ ] 自定义注册页面
