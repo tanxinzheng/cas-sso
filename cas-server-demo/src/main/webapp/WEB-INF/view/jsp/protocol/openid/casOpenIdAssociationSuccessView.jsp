@@ -18,9 +18,13 @@
     under the License.
 
 --%>
-<jsp:directive.include file="includes/top.jsp" />
-  <div id="msg" class="errors">
-    <h2><spring:message code="screen.accountlocked.heading" /></h2>
-    <p><spring:message code="screen.accountlocked.message" /></p>
-  </div>
-<jsp:directive.include file="includes/bottom.jsp" />
+<%@ page import="java.util.Set, java.util.Map, java.util.Iterator" %>
+<%
+    Map parameters = (Map)request.getAttribute("parameters");
+    Iterator iterator = parameters.keySet().iterator();
+    while (iterator.hasNext()) {
+        String key = (String)iterator.next();
+        String parameter = (String)parameters.get(key);
+        out.print(key+":"+parameter+"\n");
+    }
+%>

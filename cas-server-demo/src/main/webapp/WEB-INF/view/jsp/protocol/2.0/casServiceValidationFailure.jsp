@@ -18,10 +18,10 @@
     under the License.
 
 --%>
-<jsp:directive.include file="includes/top.jsp" />
-  <div id="msg" class="success">
-    <h2><spring:message code="screen.logout.header" /></h2>
-    <p><spring:message code="screen.logout.success" /></p>
-    <p><spring:message code="screen.logout.security" /></p>
-  </div>
-<jsp:directive.include file="includes/bottom.jsp" />
+<%@ page session="false" contentType="application/xml; charset=UTF-8" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<cas:serviceResponse xmlns:cas='http://www.yale.edu/tp/cas'>
+	<cas:authenticationFailure code='${code}'>
+		${fn:escapeXml(description)}
+	</cas:authenticationFailure>
+</cas:serviceResponse>

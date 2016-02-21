@@ -49,7 +49,7 @@
 		<property name="ticketValidator">
 			<bean class="org.jasig.cas.client.validation.Cas20ServiceTicketValidator">
 				<!-- Change with your own CAS server -->
-				<constructor-arg index="0" value="http://localhost:8080/cas/p3/" />
+				<constructor-arg index="0" value="http://localhost:8080/cas/p3" />
 				<property name="encoding" value="UTF-8" />
 			</bean>
 		</property>

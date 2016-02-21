@@ -1,6 +1,8 @@
 <%@page import="org.springframework.security.cas.authentication.CasAuthenticationToken"%>
 <%@page import="org.jasig.cas.client.authentication.AttributePrincipal"%>
 <%@page import="org.springframework.security.core.context.SecurityContextHolder"%>
+<%@ page import="java.util.HashMap" %>
+<%@ page import="java.util.Map" %>
 <%@ page pageEncoding="UTF-8" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
@@ -24,9 +26,15 @@
 			<%
 				CasAuthenticationToken casAuthenticationToken = (CasAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
 				AttributePrincipal principal = casAuthenticationToken.getAssertion().getPrincipal();
+				Map attributes = principal.getAttributes();
+				String userid=(String)attributes.get("userid");
+				String username1 = (String)attributes.get("username");
+				String email = (String)attributes.get("email");
 			%>
 			<p>username: <%=principal.getName()%>
-			<p>attributes: <%=principal.getAttributes()%></p>
+			<p>userid: <%=userid%></p>
+			<p>username1: <%=username1%></p>
+			<p>email: <%=email%></p>
 		</h3>
 	</div>
 </body>

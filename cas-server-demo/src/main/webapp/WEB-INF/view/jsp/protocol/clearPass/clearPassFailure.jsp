@@ -18,9 +18,8 @@
     under the License.
 
 --%>
-<jsp:directive.include file="includes/top.jsp" />
-  <div id="msg" class="errors">
-    <h2><spring:message code="screen.expiredpass.heading" /></h2>
-    <p><spring:message code="screen.expiredpass.message" arguments="${passwordPolicyUrl}" /></p>
-  </div>
-<jsp:directive.include file="includes/bottom.jsp" />
+<%@ page session="false" contentType="application/xml; charset=UTF-8" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<cas:clearPassResponse xmlns:cas='http://www.yale.edu/tp/cas'>
+	<cas:clearPassFailure>${fn:escapeXml(description)}</cas:clearPassFailure>
+</cas:clearPassResponse>

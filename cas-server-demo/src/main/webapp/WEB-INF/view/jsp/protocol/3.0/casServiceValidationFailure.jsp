@@ -18,8 +18,10 @@
     under the License.
 
 --%>
-<jsp:directive.include file="includes/top.jsp" />
-  <div id="msg" class="info">
-    <p><spring:message code="screen.confirmation.message" arguments="${fn:escapeXml(param.service)}${fn:indexOf(param.service, '?') eq -1 ? '?' : '&'}ticket=${serviceTicketId}" /></p>
-  </div>
-<jsp:directive.include file="includes/bottom.jsp" />
+<%@ page session="false" contentType="application/xml; charset=UTF-8" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<cas:serviceResponse xmlns:cas='http://www.yale.edu/tp/cas'>
+	<cas:authenticationFailure code='${code}'>
+		${fn:escapeXml(description)}
+	</cas:authenticationFailure>
+</cas:serviceResponse>
