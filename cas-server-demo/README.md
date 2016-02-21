@@ -105,6 +105,44 @@ memcached.locatorType=ARRAY_MOD
 memcached.failureMode=Redistribute
 ```
 
+## 支持自定义登录页面主题
+1. 创建demo主题目录（demo为自定义主题名称），复制view/jsp/default文件夹下所有文件至view/jsp/demo下
+
+2. 复制默认主题配置文件：cas-theme-default.properties，default_views.properties，如修改为demo主题cas-theme-demo.properties，demo_views.properties，并修改jsp路径
+```
+# 修改前
+...
+casLoginView.(class)=org.springframework.web.servlet.view.JstlView
+casLoginView.url=/WEB-INF/view/jsp/default/ui/casLoginView.jsp
+
+casLoginMessageView.(class)=org.springframework.web.servlet.view.JstlView
+casLoginMessageView.url=/WEB-INF/view/jsp/default/ui/casLoginMessageView.jsp
+
+casLoginConfirmView.(class)=org.springframework.web.servlet.view.JstlView
+casLoginConfirmView.url=/WEB-INF/view/jsp/default/ui/casConfirmView.jsp
+...
+－－－－－－－－－－－－－－－－－－－－
+修改后
+...
+casLoginView.(class)=org.springframework.web.servlet.view.JstlView
+casLoginView.url=/WEB-INF/view/jsp/demo/ui/casLoginView.jsp
+
+casLoginMessageView.(class)=org.springframework.web.servlet.view.JstlView
+casLoginMessageView.url=/WEB-INF/view/jsp/demo/ui/casLoginMessageView.jsp
+
+casLoginConfirmView.(class)=org.springframework.web.servlet.view.JstlView
+casLoginConfirmView.url=/WEB-INF/view/jsp/demo/ui/casConfirmView.jsp
+...
+```
+
+3. 修改cas.properties文件样式主题配置参数，启用demo主题，重启服务即可。
+```
+...
+cas.themeResolver.defaultThemeName=cas-theme-demo
+cas.viewResolver.basename=demo_views
+...
+```
+
 ## 支持微信OAuth2协议第三方登录
 
 1. 在pom.xml中添加oauth2,pac4j-oauth依赖包
