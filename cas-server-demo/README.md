@@ -104,3 +104,37 @@ memcached.protocol=BINARY
 memcached.locatorType=ARRAY_MOD
 memcached.failureMode=Redistribute
 ```
+
+## 支持微信OAuth2协议第三方登录
+
+1. 在pom.xml中添加oauth2,pac4j-oauth依赖包
+```
+<!--  注：cas-server-support-pac4j包中内置依赖pac4j-core.jar，添加pac4j-oauth时，需知道pac4j-core的版本，保持版本一致防止出现版本异常问题  -->
+<dependency>
+    <groupId>org.jasig.cas</groupId>
+    <artifactId>cas-server-support-pac4j</artifactId>
+    <version>${cas.version}</version>
+</dependency>
+<dependency>
+    <groupId>org.pac4j</groupId>
+    <artifactId>pac4j-oauth</artifactId>
+    <version>${pac4j.version}</version>
+</dependency>
+```
+
+2. 添加微信oauth2认证与cas集成所需要的自定义类文件，文件详细内容请点击以下文件查看
+
+- oauth2第三方登录公共类
+[com.github.tanxinzheng.cas.server.authentication.LoginKeyType](./src/main/java/com.github.tanxinzheng.cas.server.authentication.LoginKeyType)
+[com.github.tanxinzheng.cas.server.authentication.CustomerManager](./src/main/java/com.github.tanxinzheng.cas.server.authentication.CustomerManager)
+[com.github.tanxinzheng.cas.server.authentication.CombinedAccountVO](./src/main/java/com.github.tanxinzheng.cas.server.authentication.CombinedAccountVO)
+[com.github.tanxinzheng.cas.server.authentication.OauthPersonDirectoryPrincipalResolver](./src/main/java/com.github.tanxinzheng.cas.server.authentication.OauthPersonDirectoryPrincipalResolver)
+
+- 微信自定义类
+[org.jasig.cas.support.pac4j.plugin.wechat.WeiXinApi20](./src/main/java/org.jasig.cas.support.pac4j.plugin.wechat.WeiXinApi20)
+[org.jasig.cas.support.pac4j.plugin.wechat.WeiXinAttributesDefinition](./src/main/java/org.jasig.cas.support.pac4j.plugin.wechat.WeiXinAttributesDefinition)
+[org.jasig.cas.support.pac4j.plugin.wechat.WeiXinClient](./src/main/java/org.jasig.cas.support.pac4j.plugin.wechat.WeiXinClient)
+[org.jasig.cas.support.pac4j.plugin.wechat.WeiXinJsonTokenExtractor](./src/main/java/org.jasig.cas.support.pac4j.plugin.wechat.WeiXinJsonTokenExtractor)
+[org.jasig.cas.support.pac4j.plugin.wechat.WeiXinOAuth20ServiceImpl](./src/main/java/org.jasig.cas.support.pac4j.plugin.wechat.WeiXinOAuth20ServiceImpl)
+[org.jasig.cas.support.pac4j.plugin.wechat.WeiXinProfile](./src/main/java/org.jasig.cas.support.pac4j.plugin.wechat.WeiXinProfile)
+

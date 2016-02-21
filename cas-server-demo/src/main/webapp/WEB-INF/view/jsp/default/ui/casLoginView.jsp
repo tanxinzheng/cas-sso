@@ -59,7 +59,7 @@
       <spring:message code="screen.welcome.label.password.accesskey" var="passwordAccessKey" />
       <form:password cssClass="required" cssErrorClass="error" id="password" size="25" tabindex="2" path="password"  accesskey="${passwordAccessKey}" htmlEscape="true" autocomplete="off" />
     </section>
-
+    <a href="${WeiXinClientUrl}">Authenticate with Wechat</a>
     <input type="checkbox" name="rememberMe" id="rememberMe" value="true" />
     <label for="rememberMe">Remember Me</label>
 
