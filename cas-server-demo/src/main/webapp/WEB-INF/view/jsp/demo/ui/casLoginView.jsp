@@ -18,6 +18,7 @@
     under the License.
 
 --%>
+<%@ page pageEncoding="UTF-8" %>
 <jsp:directive.include file="includes/top.jsp" />
 
 <div class="box" id="login">
@@ -46,7 +47,6 @@
       <spring:message code="screen.welcome.label.password.accesskey" var="passwordAccessKey" />
       <form:password cssClass="required" cssErrorClass="error" id="password" size="25" tabindex="2" path="password"  accesskey="${passwordAccessKey}" htmlEscape="true" autocomplete="off" />
     </section>
-
     <input type="checkbox" name="rememberMe" id="rememberMe" value="true" />
     <label for="rememberMe">Remember Me</label>
 
@@ -63,6 +63,10 @@
       <input class="btn-submit" name="submit" accesskey="l" value="<spring:message code="screen.welcome.button.login" />" tabindex="4" type="submit" />
       <input class="btn-reset" name="reset" accesskey="c" value="<spring:message code="screen.welcome.button.clear" />" tabindex="5" type="reset" />
     </section>
+      <section class="row">
+          <a href="${WeiXinClientUrl}">微信登录</a>
+      </section>
+
   </form:form>
 </div>
 

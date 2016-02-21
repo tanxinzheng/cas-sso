@@ -140,7 +140,7 @@
     <!--    oauth2 微信登录     -->
     <bean id="clients" class="org.pac4j.core.client.Clients">
         <!--    修改为微信开发平台填写的callbackUrl参数值, 此处为示例    -->
-        <property name="callbackUrl" value="https://localhost:8080/cas/login" />
+        <property name="callbackUrl" value="${oauth2.wechat.callbackUrl}" />
         <property name="clients">
             <list>
                 <ref bean="weiXin" />
@@ -150,8 +150,8 @@
     </bean>
     <bean id="weiXin" class="org.jasig.cas.support.pac4j.plugin.wechat.WeiXinClient">
         <!--    修改为微信开发平台填写的key及secret参数值, 此处为示例    -->
-        <property name="key" value="123456" />
-        <property name="secret" value="123456" />
+        <property name="key" value="${oauth2.wechat.appid}" />
+        <property name="secret" value="${oauth2.wechat.secret}" />
     </bean>
     <!--<bean id="qq" class="org.jasig.cas.support.pac4j.plugin.qq.QqClient">-->
         <!--<property name="key" value="yourkey" />-->

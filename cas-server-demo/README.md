@@ -163,18 +163,20 @@ cas.viewResolver.basename=demo_views
 2. 添加微信oauth2认证与cas集成所需要的自定义类文件，文件详细内容请点击以下文件查看
 
 - oauth2第三方登录公共类
-[com.github.tanxinzheng.cas.server.authentication.LoginKeyType](./src/main/java/com.github.tanxinzheng.cas.server.authentication.LoginKeyType)
-[com.github.tanxinzheng.cas.server.authentication.CustomerManager](./src/main/java/com.github.tanxinzheng.cas.server.authentication.CustomerManager)
-[com.github.tanxinzheng.cas.server.authentication.CombinedAccountVO](./src/main/java/com.github.tanxinzheng.cas.server.authentication.CombinedAccountVO)
-[com.github.tanxinzheng.cas.server.authentication.OauthPersonDirectoryPrincipalResolver](./src/main/java/com.github.tanxinzheng.cas.server.authentication.OauthPersonDirectoryPrincipalResolver)
+
+[com.github.tanxinzheng.cas.server.authentication.LoginKeyType](./src/main/java/com/github/tanxinzheng/cas/server/authentication/LoginKeyType)
+[com.github.tanxinzheng.cas.server.authentication.CustomerManager](./src/main/java/com/github/tanxinzheng/cas/server/authentication/CustomerManager)
+[com.github.tanxinzheng.cas.server.authentication.CombinedAccountVO](./src/main/java/com/github/tanxinzheng/cas/server/authentication/CombinedAccountVO)
+[com.github.tanxinzheng.cas.server.authentication.OauthPersonDirectoryPrincipalResolver](./src/main/java/comcom/github/tanxinzheng/cas/server/authentication/authentication.OauthPersonDirectoryPrincipalResolver)
 
 - 微信自定义类
-[org.jasig.cas.support.pac4j.plugin.wechat.WeiXinApi20](./src/main/java/org.jasig.cas.support.pac4j.plugin.wechat.WeiXinApi20)
-[org.jasig.cas.support.pac4j.plugin.wechat.WeiXinAttributesDefinition](./src/main/java/org.jasig.cas.support.pac4j.plugin.wechat.WeiXinAttributesDefinition)
-[org.jasig.cas.support.pac4j.plugin.wechat.WeiXinClient](./src/main/java/org.jasig.cas.support.pac4j.plugin.wechat.WeiXinClient)
-[org.jasig.cas.support.pac4j.plugin.wechat.WeiXinJsonTokenExtractor](./src/main/java/org.jasig.cas.support.pac4j.plugin.wechat.WeiXinJsonTokenExtractor)
-[org.jasig.cas.support.pac4j.plugin.wechat.WeiXinOAuth20ServiceImpl](./src/main/java/org.jasig.cas.support.pac4j.plugin.wechat.WeiXinOAuth20ServiceImpl)
-[org.jasig.cas.support.pac4j.plugin.wechat.WeiXinProfile](./src/main/java/org.jasig.cas.support.pac4j.plugin.wechat.WeiXinProfile)
+
+[org.jasig.cas.support.pac4j.plugin.wechat.WeiXinApi20](./src/main/java/org/jasig/cas/support/pac4j/plugin/wechat/WeiXinApi20)
+[org.jasig.cas.support.pac4j.plugin.wechat.WeiXinAttributesDefinition](./src/main/java/org/jasig/cas/support/pac4j/plugin/wechat/WeiXinAttributesDefinition)
+[org.jasig.cas.support.pac4j.plugin.wechat.WeiXinClient](./src/main/java/org/jasig/cas/support/pac4j/plugin/wechat/WeiXinClient)
+[org.jasig.cas.support.pac4j.plugin.wechat.WeiXinJsonTokenExtractor](./src/main/java/org/jasig/cas/support/pac4j/plugin/wechat/WeiXinJsonTokenExtractor)
+[org.jasig.cas.support.pac4j.plugin.wechat.WeiXinOAuth20ServiceImpl](./src/main/java/org/jasig/cas/support/pac4j/plugin/wechat/WeiXinOAuth20ServiceImpl)
+[org.jasig.cas.support.pac4j.plugin.wechat.WeiXinProfile](./src/main/java/org/jasig/cas/support/pac4j/plugin/wechat/WeiXinProfile)
 
 3. 修改deployerConfigContext.xml文件，并添加用户验证的handler与数据入口
 ```
