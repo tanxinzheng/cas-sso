@@ -104,3 +104,153 @@ memcached.protocol=BINARY
 memcached.locatorType=ARRAY_MOD
 memcached.failureMode=Redistribute
 ```
+
+## 支持微信OAuth2协议第三方登录
+
+1. 在pom.xml中添加oauth2,pac4j-oauth依赖包
+```
+<!--  注：cas-server-support-pac4j包中内置依赖pac4j-core.jar，添加pac4j-oauth时，需知道pac4j-core的版本，保持版本一致防止出现版本异常问题  -->
+<dependency>
+    <groupId>org.jasig.cas</groupId>
+    <artifactId>cas-server-support-pac4j</artifactId>
+    <version>${cas.version}</version>
+</dependency>
+<dependency>
+    <groupId>org.pac4j</groupId>
+    <artifactId>pac4j-oauth</artifactId>
+    <version>${pac4j.version}</version>
+</dependency>
+```
+
+2. 添加微信oauth2认证与cas集成所需要的自定义类文件，文件详细内容请点击以下文件查看
+
+- oauth2第三方登录公共类
+[com.github.tanxinzheng.cas.server.authentication.LoginKeyType](./src/main/java/com.github.tanxinzheng.cas.server.authentication.LoginKeyType)
+[com.github.tanxinzheng.cas.server.authentication.CustomerManager](./src/main/java/com.github.tanxinzheng.cas.server.authentication.CustomerManager)
+[com.github.tanxinzheng.cas.server.authentication.CombinedAccountVO](./src/main/java/com.github.tanxinzheng.cas.server.authentication.CombinedAccountVO)
+[com.github.tanxinzheng.cas.server.authentication.OauthPersonDirectoryPrincipalResolver](./src/main/java/com.github.tanxinzheng.cas.server.authentication.OauthPersonDirectoryPrincipalResolver)
+
+- 微信自定义类
+[org.jasig.cas.support.pac4j.plugin.wechat.WeiXinApi20](./src/main/java/org.jasig.cas.support.pac4j.plugin.wechat.WeiXinApi20)
+[org.jasig.cas.support.pac4j.plugin.wechat.WeiXinAttributesDefinition](./src/main/java/org.jasig.cas.support.pac4j.plugin.wechat.WeiXinAttributesDefinition)
+[org.jasig.cas.support.pac4j.plugin.wechat.WeiXinClient](./src/main/java/org.jasig.cas.support.pac4j.plugin.wechat.WeiXinClient)
+[org.jasig.cas.support.pac4j.plugin.wechat.WeiXinJsonTokenExtractor](./src/main/java/org.jasig.cas.support.pac4j.plugin.wechat.WeiXinJsonTokenExtractor)
+[org.jasig.cas.support.pac4j.plugin.wechat.WeiXinOAuth20ServiceImpl](./src/main/java/org.jasig.cas.support.pac4j.plugin.wechat.WeiXinOAuth20ServiceImpl)
+[org.jasig.cas.support.pac4j.plugin.wechat.WeiXinProfile](./src/main/java/org.jasig.cas.support.pac4j.plugin.wechat.WeiXinProfile)
+
+3. 修改deployerConfigContext.xml文件，并添加用户验证的handler与数据入口
+```
+...
+<bean id="serviceRegistryDao" class="org.jasig.cas.services.InMemoryServiceRegistryDaoImpl">
+    <property name="registeredServices">
+        <list>
+            <bean class="org.jasig.cas.services.RegisteredServiceImpl">
+                <property name="id" value="0" />
+                <property name="name" value="HTTP" />
+                <property name="description" value="Only Allows HTTP Urls" />
+                <property name="serviceId" value="http://**" />
+                <property name="evaluationOrder" value="10000001" />
+                <property name="allowedAttributes">
+                <list>
+                  <!-- weixin -->
+                  <value>openid</value>
+                  <value>nickname</value>
+                  <value>and so on</value>
+                </list>
+            </bean>
+        </list>
+    </property>
+</bean>
+...
+
+...
+<bean id="authenticationManager" class="org.jasig.cas.authentication.PolicyBasedAuthenticationManager">
+    <constructor-arg>
+        <map>
+            <!--
+               | IMPORTANT
+               | Every handler requires a unique name.
+               | If more than one instance of the same handler class is configured, you must explicitly
+               | set its name to something other than its default name (typically the simple class name).
+               -->
+            <entry key-ref="proxyAuthenticationHandler" value-ref="proxyPrincipalResolver" />
+            <entry key-ref="primaryAuthenticationHandler" value-ref="primaryPrincipalResolver" />
+            <!--    oauth2 登录处理     -->
+            <entry key-ref="oauthAuthenticationHandler" value-ref="oauthPrincipalResolver" />
+        </map>
+    </constructor-arg>
+
+    <!--
+       | Defines the security policy around authentication. Some alternative policies that ship with CAS:
+       |
+       | * NotPreventedAuthenticationPolicy - all credential must either pass or fail authentication
+       | * AllAuthenticationPolicy - all presented credential must be authenticated successfully
+       | * RequiredHandlerAuthenticationPolicy - specifies a handler that must authenticate its credential to pass
+       -->
+    <property name="authenticationPolicy">
+        <bean class="org.jasig.cas.authentication.AnyAuthenticationPolicy" />
+    </property>
+
+    <property name="authenticationMetaDataPopulators">
+        <list>
+            <bean class="org.jasig.cas.authentication.principal.RememberMeAuthenticationMetaDataPopulator" />
+            <bean class="org.jasig.cas.support.pac4j.authentication.ClientAuthenticationMetaDataPopulator" />
+        </list>
+    </property>
+</bean>
+
+<bean id="oauthAuthenticationHandler" class="org.jasig.cas.support.pac4j.authentication.handler.support.ClientAuthenticationHandler">
+    <constructor-arg index="0" ref="clients"/>
+</bean>
+<bean id="oauthPrincipalResolver" class="com.github.tanxinzheng.cas.server.authentication.OauthPersonDirectoryPrincipalResolver" />
+...
+```
+
+4. 修改applicationContext.xml，添加以下代码
+```
+...
+<bean id="clients" class="org.pac4j.core.client.Clients">
+    <property name="callbackUrl" value="https://localhost:8080/cas/login" />
+    <property name="clients">
+        <list>
+            <ref bean="weiXin" />
+            <ref bean="qq" />
+        </list>
+    </property>
+</bean>
+<bean id="weiXin" class="org.jasig.cas.support.pac4j.plugin.weixin.WeiXinClient">
+    <property name="key" value="yourkey" />
+    <property name="secret" value="yousecret" />
+</bean>
+<bean id="qq" class="org.jasig.cas.support.pac4j.plugin.qq.QqClient">
+    <property name="key" value="yourkey" />
+    <property name="secret" value="yousecret" />
+</bean>
+...
+```
+
+5. 修改login-webflow.xml，添加以下代码(注：此段代码必须添加至文件最前面，否则会导致无法生成微信请求链接：${WeiXinClientUrl}为空)
+```
+<action-state id="clientAction">
+    <evaluate expression="clientAction" />
+    <transition on="success" to="sendTicketGrantingTicket" />
+    <transition on="error" to="ticketGrantingTicketCheck" />
+    <transition on="stop" to="stopWebflow" />
+</action-state>
+<view-state id="stopWebflow" />
+```
+
+6. 修改cas-servlet.xml，添加以下代码
+```
+<bean id="clientAction" class="org.jasig.cas.support.pac4j.web.flow.ClientAction">
+    <constructor-arg index="0" ref="centralAuthenticationService"/>
+    <constructor-arg index="1" ref="clients"/>
+</bean>
+```
+
+7. 修改casLoginView.jsp，添加微信登录链接标签，${WeiXinClientUrl}会自动生成微信登录跳转链接，ClientNameUrl这个属性是被ClientAction自动创建).也就是你自定义的Client类名加上Url.如我创建的类为WeixinClient则对应的link名为WeixinClientUrl。
+```
+<a href="${WeiXinClientUrl}">Authenticate with Wechat</a>
+# 如Q第三方登录客户端类名为QqClient，则链接参数为QqClientUrl，如下
+<a href="${QqClientUrl}">Authenticate with QQ</a><br />
+```
