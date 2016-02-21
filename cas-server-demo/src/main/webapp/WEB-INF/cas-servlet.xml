@@ -264,4 +264,9 @@
         c:cas-ref="centralAuthenticationService"
         c:tgtCookieGenerator-ref="ticketGrantingTicketCookieGenerator"
         c:warnCookieGenerator-ref="warnCookieGenerator"/>
+
+    <bean id="clientAction" class="org.jasig.cas.support.pac4j.web.flow.ClientAction">
+        <constructor-arg index="0" ref="centralAuthenticationService"/>
+        <constructor-arg index="1" ref="clients"/>
+    </bean>
 </beans>

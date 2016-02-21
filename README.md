@@ -20,10 +20,10 @@
 - [x] [集成Memcache功能](./cas-server-demo/README.md)
 - [ ] 集成登录验证码
 - [x] [自定义登录页面](./cas-server-demo/README.md)
-- [ ] OpenID Login for QQ
-- [ ] OpenID Login for Wechat
-- [ ] OpenID Login for Weibo
-- [ ] OpenID Login for Alipay
+- [ ] OAuth2 Login for QQ
+- [x] [OAuth2 Login for Wechat](./cas-server-demo/README.md)
+- [ ] OAuth2 Login for Weibo
+- [ ] OAuth2 Login for Alipay
 - [ ] OAuth2 for Server
 - [ ] OAuth2 for Client
 
