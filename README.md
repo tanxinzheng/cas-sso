@@ -16,12 +16,12 @@
 - [x] [集成Spring Security客户端演示](./cas-client-spring-security)
 - [x] [集成Apache Shiro客户端演示](./cas-client-apache-shiro)
 - [ ] 集成NodeJs客户端演示
-- [x] [集成Remember Me功能](./cas-server-demo/README.md#支持RememberMe功能)
-- [x] [集成Memcache功能](./cas-server-demo/README.md#支持Memcached)
+- [x] [集成Remember Me功能](./cas-server-demo/README.md#支持rememberme功能)
+- [x] [集成Memcache功能](./cas-server-demo/README.md#支持memcached)
 - [x] [扩展用户自定义属性](./cas-server-demo/README.md#扩展自定义属性)
 - [x] [自定义登录页面](./cas-server-demo/README.md#支持自定义登录页面主题)
 - [ ] OAuth2 Login for QQ
-- [x] [OAuth2 Login for Wechat](./cas-server-demo/README.md#支持微信OAuth2协议第三方登录)
+- [x] [OAuth2 Login for Wechat](./cas-server-demo/README.md#支持微信oauth2协议第三方登录)
 - [ ] OAuth2 Login for Weibo
 - [ ] OAuth2 Login for Alipay
 - [ ] OAuth2 for Server
