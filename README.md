@@ -27,8 +27,6 @@
 - [ ] OAuth2 for Server
 - [ ] OAuth2 for Client
 
-##
-
 ## 意见反馈
 欢迎大家随时提交反馈意见及功能需求，或fork之后new pull request，本人会及时对问题进行回复，[请戳我提交issue。](https://github.com/tanxinzheng/cas-sso/issues/new)
 
