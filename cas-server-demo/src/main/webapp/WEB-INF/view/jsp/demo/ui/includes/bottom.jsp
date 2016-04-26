@@ -21,7 +21,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
       </div> <!-- END #content -->
-      
+
       <footer>
         <div id="copyright">
           <p><spring:message code="copyright" /></p>
