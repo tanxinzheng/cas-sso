@@ -34,6 +34,22 @@
                 </configuration>
             </plugin>
             <plugin>
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>8.1.8.v20121106</version>
+                <configuration>
+                    <webAppConfig>
+                        <contextPath>/</contextPath>
+                    </webAppConfig>
+                    <connectors>
+                        <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
+                            <port>8200</port>
+                            <maxIdleTime>60000</maxIdleTime>
+                        </connector>
+                    </connectors>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.3</version>
@@ -81,7 +97,14 @@
             <version>5.1.31</version>
         </dependency>
 
-        <!--   oauth2 依赖包     -->
+        <!--   oauth2 server require     -->
+        <dependency>
+            <groupId>org.jasig.cas</groupId>
+            <artifactId>cas-server-support-oauth</artifactId>
+            <version>${cas.version}</version>
+        </dependency>
+
+        <!--   oauth2 client 依赖包     -->
         <dependency>
             <groupId>org.jasig.cas</groupId>
             <artifactId>cas-server-support-pac4j</artifactId>

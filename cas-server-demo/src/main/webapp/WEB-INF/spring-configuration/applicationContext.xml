@@ -144,7 +144,8 @@
         <property name="clients">
             <list>
                 <ref bean="weiXin" />
-                <!--<ref bean="qq" />-->
+                <ref bean="github" />
+                <ref bean="qq" />
             </list>
         </property>
     </bean>
@@ -153,9 +154,13 @@
         <property name="key" value="${oauth2.wechat.appid}" />
         <property name="secret" value="${oauth2.wechat.secret}" />
     </bean>
-    <!--<bean id="qq" class="org.jasig.cas.support.pac4j.plugin.qq.QqClient">-->
-        <!--<property name="key" value="yourkey" />-->
-        <!--<property name="secret" value="yousecret" />-->
-    <!--</bean>-->
+    <bean id="qq" class="org.jasig.cas.support.pac4j.plugin.qq.QqClient">
+        <property name="key" value="${oauth2.qq.appid}" />
+        <property name="secret" value="${oauth2.qq.secret}" />
+    </bean>
+    <bean id="github" class="org.jasig.cas.support.pac4j.plugin.github.GithubClient">
+        <property name="key" value="${oauth2.github.appid}" />
+        <property name="secret" value="${oauth2.github.secret}" />
+    </bean>
 
 </beans>

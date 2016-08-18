@@ -64,7 +64,9 @@
       <input class="btn-reset" name="reset" accesskey="c" value="<spring:message code="screen.welcome.button.clear" />" tabindex="5" type="reset" />
     </section>
       <section class="row">
-          <a href="${WeiXinClientUrl}">微信登录</a>
+          <a href="${WeiXinClientUrl}">微信登录</a>|
+          <a href="${GithubClientUrl}">Github登录</a>
+          <a href="${QqClientUrl}">QQ登录</a>
       </section>
 
   </form:form>
